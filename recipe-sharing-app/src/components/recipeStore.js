@@ -1,4 +1,3 @@
-// src/components/recipeStore.js
 import create from 'zustand';
 
 const useRecipeStore = create(set => ({
@@ -8,7 +7,17 @@ const useRecipeStore = create(set => ({
   updateRecipe: (updatedRecipe) => set(state => ({
     recipes: state.recipes.map(recipe => recipe.id === updatedRecipe.id ? updatedRecipe : recipe)
   })),
-  setRecipes: (recipes) => set({ recipes })
+  setRecipes: (recipes) => set({ recipes }),
+
+  // New functionality for search and filtering
+  searchTerm: '',
+  filteredRecipes: [],
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  filterRecipes: () => set(state => ({
+    filteredRecipes: state.recipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+    )
+  }))
 }));
 
 export { useRecipeStore };
