@@ -22,19 +22,22 @@ const useRecipeStore = create((set) => ({
     )
   })),
 
-  // Action to set the search term (does not trigger filtering)
-  setSearchTerm: (term) => set({ searchTerm: term }),
+  // Action to set the search term and trigger filtering
+  setSearchTerm: (term) => set((state) => {
+    const updatedState = { searchTerm: term };
+    // Trigger filtering after search term change
+    updatedState.filteredRecipes = state.recipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(term.toLowerCase())
+    );
+    return updatedState;
+  }),
 
   // Action to filter recipes based on the current search term
   filterRecipes: () => set((state) => ({
     filteredRecipes: state.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-      recipe.ingredients.some(ingredient =>
-        ingredient.toLowerCase().includes(state.searchTerm.toLowerCase())
-      )
+      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
     )
   }))
 }));
 
 export default useRecipeStore;
-
