@@ -22,10 +22,8 @@ const useRecipeStore = create((set) => ({
     )
   })),
 
-  // Action to set the search term and trigger filtering
-  setSearchTerm: (term) => set((state) => ({
-    searchTerm: term
-  })),
+  // Action to set the search term (does not trigger filtering)
+  setSearchTerm: (term) => set({ searchTerm: term }),
 
   // Action to filter recipes based on the current search term
   filterRecipes: () => set((state) => ({
@@ -39,3 +37,4 @@ const useRecipeStore = create((set) => ({
 }));
 
 export default useRecipeStore;
+
