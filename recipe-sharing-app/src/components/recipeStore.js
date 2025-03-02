@@ -19,7 +19,7 @@ const useRecipeStore = create((set) => ({
   updateRecipe: (updatedRecipe) => set((state) => ({
     recipes: state.recipes.map(recipe =>
       recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-                               setRecipes
+                            
     )
   })),
 
@@ -41,5 +41,5 @@ const useRecipeStore = create((set) => ({
   }))
 }));
 
-export default useRecipeStore;
+export default useRecipeStore;   setRecipes
 
