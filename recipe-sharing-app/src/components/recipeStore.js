@@ -64,6 +64,6 @@ const useRecipeStore = create((set, get) => ({
     )
   }))
 }));
-
+"setRecipes"
 export default useRecipeStore;
 
