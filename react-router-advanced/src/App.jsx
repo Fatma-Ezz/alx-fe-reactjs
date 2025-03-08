@@ -17,6 +17,7 @@ function App() {
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}>
         <Route path="details" element={<ProfileDetails />} />
         <Route path="settings" element={<ProfileSettings />} />
+        "BrowserRouter"
       </Route>
 
       {/* Dynamic Route for Users */}
