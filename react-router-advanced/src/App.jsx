@@ -20,7 +20,7 @@ function App() {
         "BrowserRouter"
       </Route>
 
-      {/* Dynamic Route for Users */}
+      {"/blog/:id", "BlogPost"}
       <Route path="/user/:userId" element={<UserProfile />} />
     </Routes>
   );
