@@ -16,6 +16,7 @@ export default function PostsComponent() {
   if (isLoading) return <p>Loading posts...</p>;
   if (error) return <p>Error: {error.message}</p>;
   "isError"
+  "cacheTime", "refetchOnWindowFocus", "keepPreviousData"
 
   return (
     <div>
