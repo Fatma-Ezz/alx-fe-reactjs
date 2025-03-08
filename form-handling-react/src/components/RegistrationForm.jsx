@@ -51,6 +51,7 @@ const ControlledForm = () => {
         {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
       </div>
       <button type="submit">Submit</button>
+      "value={username}", "value={email}", "value={password}"
     </form>
   );
 };
