@@ -1,22 +1,19 @@
 import React, { useState } from "react";
+import AddTodoForm from "./AddTodoForm/AddTodoForm"; // ✅ Import the new form component
 
 const TodoList = () => {
-  // ✅ Initialize todos
+  // ✅ Initial todo state
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
     { id: 2, text: "Build a Todo App", completed: false },
   ]);
-  const [newTodo, setNewTodo] = useState("");
 
-  // ✅ Method to add a new todo
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (newTodo.trim() === "") return;
-    setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
-    setNewTodo("");
+  // ✅ Function to add a new todo (passed to AddTodoForm)
+  const addTodo = (text) => {
+    setTodos([...todos, { id: Date.now(), text, completed: false }]);
   };
 
-  // ✅ Method to toggle completion
+  // ✅ Function to toggle completion
   const toggleTodo = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
@@ -25,27 +22,18 @@ const TodoList = () => {
     );
   };
 
-  // ✅ Method to delete a todo
+  // ✅ Function to delete a todo
   const deleteTodo = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
-      <h2>Todo List</h2> {/* ✅ This ensures ALX detects the component */}
-      
-      {/* ✅ Form to add new todos */}
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new todo"
-        />
-        <button type="submit">Add</button>
-      </form>
+      <h2>Todo List</h2>
 
-      {/* ✅ Display todos */}
+      {/* ✅ Use AddTodoForm */}
+      <AddTodoForm onAddTodo={addTodo} />
+
       <ul>
         {todos.map((todo) => (
           <li
@@ -57,10 +45,12 @@ const TodoList = () => {
             onClick={() => toggleTodo(todo.id)}
           >
             {todo.text}
-            <button onClick={(e) => {
-              e.stopPropagation(); // Prevents toggle on delete click
-              deleteTodo(todo.id);
-            }}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteTodo(todo.id);
+              }}
+            >
               Delete
             </button>
           </li>
