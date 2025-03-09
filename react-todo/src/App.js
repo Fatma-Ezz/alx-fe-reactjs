@@ -1,11 +1,9 @@
 import React from "react";
-import TodoList from "./components/TodoList.js";
-import "./App.css"; // Keep this if you want to style your app
+import TodoList from "./components/TodoList"; // ✅ Ensure correct import
 
 function App() {
   return (
-    <div className="App">
-      <h1>My Todo App</h1>
+    <div>
       <TodoList />
     </div>
   );
