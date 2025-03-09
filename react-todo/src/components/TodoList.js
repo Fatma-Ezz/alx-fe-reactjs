@@ -5,6 +5,15 @@ const TodoList = () => {
     { id: 1, text: "Learn React", completed: false },
     { id: 2, text: "Build a Todo App", completed: false },
   ]);
+  const [newTodo, setNewTodo] = useState("");
+
+  // Add a new todo
+  const addTodo = (e) => {
+    e.preventDefault();
+    if (newTodo.trim() === "") return;
+    setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+    setNewTodo("");
+  };
 
   // Toggle completion
   const toggleTodo = (id) => {
@@ -22,6 +31,16 @@ const TodoList = () => {
 
   return (
     <div>
+      <h2>Todo List</h2>
+      <form onSubmit={addTodo}>
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          placeholder="Add a new todo"
+        />
+        <button type="submit">Add</button>
+      </form>
       <ul>
         {todos.map((todo) => (
           <li
