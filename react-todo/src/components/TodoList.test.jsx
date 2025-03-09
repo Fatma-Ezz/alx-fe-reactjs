@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import TodoList from "../components/TodoList";
-test("adds a new todo", () => {
+
+test("adds a new todo", async () => {
   render(<TodoList />);
   const input = screen.getByPlaceholderText("Add a new todo");
   const addButton = screen.getByText("Add");
@@ -8,15 +9,20 @@ test("adds a new todo", () => {
   fireEvent.change(input, { target: { value: "New Task" } });
   fireEvent.click(addButton);
 
-  expect(screen.getByText("New Task")).toBeInTheDocument();
+  // Wait for new todo to appear
+  expect(await screen.findByText("New Task")).toBeInTheDocument();
 });
 
 test("deletes a todo", async () => {
   render(<TodoList />);
-  const deleteButton = screen.getAllByText("Delete")[0]; // Get first delete button
+  
+  // Ensure "Learn React" exists before deletion
+  expect(screen.getByText("Learn React")).toBeInTheDocument();
 
-  fireEvent.click(deleteButton);
+  const deleteButtons = await screen.findAllByText("Delete"); // Wait for buttons to load
+  fireEvent.click(deleteButtons[0]);
 
+  // Wait for the item to disappear
   await waitFor(() => {
     expect(screen.queryByText("Learn React")).not.toBeInTheDocument();
   });
