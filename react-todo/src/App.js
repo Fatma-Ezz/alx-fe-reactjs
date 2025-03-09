@@ -1,5 +1,5 @@
 import React from "react";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList.js";
 import "./App.css"; // Keep this if you want to style your app
 
 function App() {
