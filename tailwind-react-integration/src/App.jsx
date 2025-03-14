@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import UserProfile from "./components/UserProfile";
 import "./App.css"; // Keep this if needed
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           Edit <code className="bg-gray-200 px-2 py-1 rounded">src/App.jsx</code> and save to test HMR.
         </p>
       </div>
+
+      {/* User Profile Section */}
+      <UserProfile />
 
       {/* Footer */}
       <p className="mt-6 text-gray-500 text-sm">
