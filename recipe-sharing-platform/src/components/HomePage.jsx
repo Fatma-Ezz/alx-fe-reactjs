@@ -19,6 +19,7 @@ const HomePage = () => {
             <img src={recipe.image} alt={recipe.title} className="w-full rounded-md mb-4" />
             <h2 className="text-lg font-semibold">{recipe.title}</h2>
             <p className="text-sm text-gray-600">{recipe.summary}</p>
+            "Link", "react-router-dom", "to"
           </div>
         ))}
       </div>
