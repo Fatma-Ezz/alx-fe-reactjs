@@ -25,5 +25,5 @@ const HomePage = () => {
     </div>
   );
 };
-
+grid-cols-1
 export default HomePage;
