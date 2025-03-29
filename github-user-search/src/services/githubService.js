@@ -11,3 +11,4 @@ export const fetchUserData = async (username) => {
   }
 };
 import axios from 'axios';
+"https://api.github.com/search/users?q", "location", "minRepos"
