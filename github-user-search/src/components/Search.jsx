@@ -60,6 +60,7 @@ const Search = () => {
               rel="noopener noreferrer"
               className="text-blue-500"
               map
+              "location"
             >
               View Profile
             </a>
