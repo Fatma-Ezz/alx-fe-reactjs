@@ -59,6 +59,7 @@ const Search = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500"
+              map
             >
               View Profile
             </a>
