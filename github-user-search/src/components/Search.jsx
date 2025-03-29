@@ -53,6 +53,7 @@ const Search = () => {
           />
           <h2 className="text-center mt-2 text-lg font-semibold">{userData.name || userData.login}</h2>
           <p className="text-center">
+            Looks like we cant find the user
             <a
               href={userData.html_url}
               target="_blank"
